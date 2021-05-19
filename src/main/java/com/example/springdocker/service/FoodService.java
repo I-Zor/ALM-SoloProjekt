@@ -30,4 +30,10 @@ public class FoodService {
                 .map(food -> food.getName())
                 .collect(Collectors.toList());
     }
+
+    public void deleteFood (String food) {
+
+        Food savedFood = repository.findAll().stream().filter(f -> f.getName() == food).findFirst().get();
+        repository.delete(savedFood);
+    }
 }
